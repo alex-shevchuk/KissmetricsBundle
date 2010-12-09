@@ -6,8 +6,8 @@ use Bundle\KissmetricsBundle\Queue;
 
 class Tracker {
 
-	protected $queue;
-	protected $config;
+	protected $queue = array();
+	protected $config = array();
 
 	public function __construct(array $config = array()) {
 		$this->config = $config;
@@ -23,16 +23,20 @@ class Tracker {
 		}
 	}
 
+	public function setConfig(array $config = array()) {
+		$this->config = $config;
+	}
+
+	public function getConfig() {
+		return $this->config;
+	}
+
 	public function setQueue($queue) {
 		$this->queue = $queue;
 	}
 
 	public function getQueue() {
 		return $this->queue;
-	}
-
-	public function pushQueue(Item $item) {
-		$this->queue[] = $item;
 	}
 
 	public function hasItem(Queue\Item $item) {
