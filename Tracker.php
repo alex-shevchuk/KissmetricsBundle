@@ -47,11 +47,20 @@ class Tracker {
 		$this->queue[] = $item;
 	}
 
+	public function removeItem(Queue\Item $item) {
+		if (!$this->hasItem($item)) {
+			return null;
+		}
+		unset($this->queue[array_search($item, $this->queue, true)]);
+		return $item;
+	}
+
 	public function addIdentify($name) {
 		$item = new Queue\Item();
 		$item->setKey(Queue\Item::IDENTIFY_KEY);
 		$item->setName($name);
 		$this->addItem($item);
+		return $item;
 	}
 
 	public function addRecord($name, $properties = null) {
@@ -62,6 +71,7 @@ class Tracker {
 			$item->setProperties($properties);
 		}
 		$this->addItem($item);
+		return $item;
 	}
 
 	public function addSet($properties) {
@@ -69,6 +79,7 @@ class Tracker {
 		$item->setKey(Queue\Item::SET_KEY);
 		$item->setProperties($properties);
 		$this->addItem($item);
+		return $item;
 	}
 
 	public function addAlias($identity, $associate) {
@@ -77,6 +88,7 @@ class Tracker {
 		$item->setName($identity);
 		$item->setProperties($associate);
 		$this->addItem($item);
+		return $item;
 	}
 
 }
