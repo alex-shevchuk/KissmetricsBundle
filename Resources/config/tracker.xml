@@ -3,19 +3,20 @@
 	xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
 	<parameters>
-		<parameter key="kissmetrics.tracker.class">Bundle\KissmetricsBundle\Tracker</parameter>
+		<parameter key="kissmetrics.webtracker.class">Bundle\KissmetricsBundle\Tracker\WebTracker</parameter>
 		<parameter key="kissmetrics.tracker.config" type="collection" />
 	</parameters>
 
 	<services>
-		<service id="kissmetrics.tracker" class="%kissmetrics.tracker.class%" >
-			<argument type="service" id="request" />
+		<service id="kissmetrics.webtracker" class="%kissmetrics.webtracker.class%" >
 			<argument>%kissmetrics.tracker.config%</argument>
+			<argument type="service" id="request" />
+			<call method="checkTrackDefaultView" />
 		</service>
 
-		<service id="templating.helper.kissmetrics_tracker" class="Bundle\KissmetricsBundle\Helper\TrackerHelper">
-			<tag name="templating.helper" alias="kissmetrics_tracker" />
-			<argument type="service" id="kissmetrics.tracker" />
+		<service id="templating.helper.kissmetrics_webtracker" class="Bundle\KissmetricsBundle\Helper\WebTrackerHelper">
+			<tag name="templating.helper" alias="kissmetrics_webtracker" />
+			<argument type="service" id="kissmetrics.webtracker" />
 		</service>
 	</services>
 

@@ -4,10 +4,10 @@ namespace Bundle\KissmetricsBundle\Queue;
 
 class Item {
 
-	const IDENTIFY_KEY = 'identify';
-	const RECORD_KEY   = 'record';
-	const SET_KEY      = 'set';
-	const ALIAS_KEY    = 'alias';
+	const IDENTIFY = 'identify';
+	const RECORD   = 'record';
+	const SET      = 'set';
+	const ALIAS    = 'alias';
 
 	protected $key;
 	protected $name;
