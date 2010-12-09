@@ -13,6 +13,10 @@ class TrackerHelper extends Helper {
 		$this->tracker = $tracker;
 	}
 
+	public function getApiKey() {
+		return $this->tracker->getApiKey();
+	}
+
 	public function getRequestUri() {
 		return $this->tracker->getRequestUri();
 	}

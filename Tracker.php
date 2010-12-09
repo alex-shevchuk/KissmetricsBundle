@@ -2,6 +2,8 @@
 
 namespace Bundle\KissmetricsBundle;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class Tracker {
 
 	protected $config;
@@ -18,7 +20,7 @@ class Tracker {
 	}
 
 	public function getApiKey() {
-		if (array_key_exists['apiKey'], $this->config)) {
+		if (array_key_exists('apiKey', $this->config)) {
 			return $this->config['apiKey'];
 		}
 	}
