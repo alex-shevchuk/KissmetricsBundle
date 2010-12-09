@@ -36,7 +36,7 @@ class Item {
 		$this->properties = $properties;
 	}
 
-	public function getProperies($properties) {
+	public function getProperties() {
 		return $this->properties;
 	}
 
