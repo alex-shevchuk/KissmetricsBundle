@@ -2,17 +2,15 @@
 
 namespace Bundle\KissmetricsBundle;
 
-use Symfony\Component\HttpFoundation\Request;
+use Bundle\KissmetricsBundle\Queue;
 
 class Tracker {
 
+	protected $queue;
 	protected $config;
-	protected $request;
-	protected $withoutBaseUrl = TRUE;
 
-	public function __construct(Request $request, array $config = array()) {
+	public function __construct(array $config = array()) {
 		$this->config = $config;
-		$this->request = $request;
 	}
 
 	public function setApiKey($apiKey) {
@@ -25,32 +23,56 @@ class Tracker {
 		}
 	}
 
-	public function setRequest(Request $request) {
-		$this->request = $request;
+	public function setQueue($queue) {
+		$this->queue = $queue;
 	}
 
-	public function getRequest() {
-		return $this->request;
+	public function getQueue() {
+		return $this->queue;
 	}
 
-	public function getRequestUri() {
-		$requestUri = $this->request->getRequestUri();
-		if ($this->withoutBaseUrl) {
-			$baseUrl = $this->request->getBaseUrl();
-			if ($baseUrl != '/') {
-				return str_replace($baseUrl, '', $requestUri);
-			}
-			return $requestUri;
+	public function pushQueue(Item $item) {
+		$this->queue[] = $item;
+	}
+
+	public function hasItem(Queue\Item $item) {
+		return in_array($item, $this->queue, true);
+	}
+
+	public function addItem(Queue\Item $item) {
+		$this->queue[] = $item;
+	}
+
+	public function addIdentify($name) {
+		$item = new Queue\Item();
+		$item->setKey(Queue\Item::IDENTIFY_KEY);
+		$item->setName($name);
+		$this->addItem($item);
+	}
+
+	public function addRecord($name, $properties = null) {
+		$item = new Queue\Item();
+		$item->setKey(Queue\Item::RECORD_KEY);
+		$item->setName($name);
+		if ($properties) {
+			$item->setProperties($properties);
 		}
-		return $requestUri;
+		$this->addItem($item);
 	}
 
-	public function setWithoutBaseUrl($b = true) {
-		$this->withoutBaseUrl = (bool) $b;
+	public function addSet($properties) {
+		$item = new Queue\Item();
+		$item->setKey(Queue\Item::SET_KEY);
+		$item->setProperties($properties);
+		$this->addItem($item);
 	}
 
-	public function getWithoutBaseUrl() {
-		return $this->withoutBaseUrl;
+	public function addAlias($identity, $associate) {
+		$item = new Queue\Item();
+		$item->setKey(Queue\Item::ALIAS_KEY);
+		$item->setName($identity);
+		$item->setProperties($associate);
+		$this->addItem($item);
 	}
 
 }
