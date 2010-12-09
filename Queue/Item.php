@@ -4,7 +4,7 @@ namespace Bundle\KissmetricsBundle\Queue;
 
 class Item {
 
-	const IDENTIFY_KEY = 'identity';
+	const IDENTIFY_KEY = 'identify';
 	const RECORD_KEY   = 'record';
 	const SET_KEY      = 'set';
 	const ALIAS_KEY    = 'alias';

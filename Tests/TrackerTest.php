@@ -52,4 +52,49 @@ class TrackerTest extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($this->tracker->hasItem($item));
 	}
 
+	public function testAddIdentify() {
+		$name = 'Identify';
+		$item = $this->tracker->addIdentify($name);
+		$this->assertEquals(Item::IDENTIFY_KEY, $item->getKey());
+		$this->assertEquals($name, $item->getName());
+		$this->assertNull($item->getProperties());
+		$this->assertTrue($this->tracker->hasItem($item));
+	}
+
+	public function testAddRecord() {
+		$name = 'Record';
+		$item = $this->tracker->addRecord($name);
+		$this->assertEquals(Item::RECORD_KEY, $item->getKey());
+		$this->assertEquals($name, $item->getName());
+		$this->assertNull($item->getProperties());
+		$this->assertTrue($this->tracker->hasItem($item));
+
+		$name2 = 'Record2';
+		$prop2 = array('some', 2, '45');
+		$item2 = $this->tracker->addRecord($name2, $prop2);
+		$this->assertEquals(ITEM::RECORD_KEY, $item2->getKey());
+		$this->assertEquals($name2, $item2->getName());
+		$this->assertEquals($prop2, $item2->getProperties());
+		$this->assertTrue($this->tracker->hasItem($item2));
+	}
+
+	public function testAddSet() {
+		$properties = array('something', 'other thing');
+		$item = $this->tracker->addSet($properties);
+		$this->assertEquals(Item::SET_KEY, $item->getKey());
+		$this->assertEquals($properties, $item->getProperties());
+		$this->assertNull($item->getName());
+		$this->assertTrue($this->tracker->hasItem($item));
+	}
+
+	public function testAddAlias() {
+		$identity = 'anonymous';
+		$associate = 'xxxxxx';
+		$item = $this->tracker->addAlias($identity, $associate);
+		$this->assertEquals(Item::ALIAS_KEY, $item->getKey());
+		$this->assertEquals($identity, $item->getName());
+		$this->assertEquals($associate, $item->getProperties());
+		$this->assertTrue($this->tracker->hasItem($item));
+	}
+
 }
