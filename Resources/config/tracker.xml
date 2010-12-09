@@ -1,0 +1,22 @@
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+
+	<parameters>
+		<parameter key="kissmetrics.tracker.class">Bundle\KissmetricsBundle\Tracker</parameter>
+		<parameter key="kissmetrics.tracker.config" type="collection" />
+	</parameters>
+
+	<services>
+		<service id="kissmetrics.tracker" class="%kissmetrics.tracker.class%" >
+			<argument type="service" id="request" />
+			<argument>%kissmetrics.tracker.config%</argument>
+		</service>
+
+		<service id="templating.helper.kissmetrics_tracker" class="Bundle\KissmetricsBundle\Helper\TrackerHelper">
+			<tag name="templating.helper" alias="kissmetrics_tracker" />
+			<argument type="service" id="kissmetrics.tracker" />
+		</service>
+	</services>
+
+</container>
