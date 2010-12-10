@@ -4,7 +4,7 @@ namespace Bundle\KissmetricsBundle\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Bundle\KissmetricsBundle\Queue\Item;
-use Bundle\KissmetricsBundle\Tracker\WebTracker;
+use Bundle\KissmetricsBundle\TrackerInterface;
 
 class WebTrackerHelper extends Helper {
 
@@ -12,7 +12,7 @@ class WebTrackerHelper extends Helper {
 
 	protected $tracker;
 
-	public function __construct(WebTracker $tracker) {
+	public function __construct(TrackerInterface $tracker) {
 		$this->tracker = $tracker;
 	}
 
