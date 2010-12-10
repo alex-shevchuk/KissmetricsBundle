@@ -4,7 +4,7 @@ namespace Bundle\KissmetricsBundle\Tracker\WebTracker;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session;
-use Bundle\KissmetricsBundle\AbstractTracker;
+use Bundle\KissmetricsBundle\Tracker\WebTracker;
 use Bundle\KissmetricsBundle\Queue;
 
 class SessionTracker extends WebTracker {
