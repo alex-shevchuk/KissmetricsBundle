@@ -30,3 +30,26 @@ Default Web Tracker
 
 OR Anonymous Session Tracker - Use this if you intend to alias the anonymous session user to a real user at some later point
     {% include "KissmetricsBundle:Tracker:session" with ['_view': _view] %}
+
+#### Optional (Add additional items to queue)
+Add Identify
+    $this->container->get('kissmetrics.webtracker')->addIdentify('Your Identity');
+	or
+    $this->container->get('kissmetrics.sessiontracker')->addIdentify('Your Identity');
+
+Add Record
+    $this->container->get('kissmetrics.webtracker')->addRecord('Name');
+    $this->container->get('kissmetrics.webtracker')->addRecord('Name', mixed $properties);
+    or 
+    $this->container->get('kissmetrics.sessiontracker')->addRecord('Name');
+    $this->container->get('kissmetrics.sessiontracker')->addRecord('Name', mixed $properties);
+
+Add Set
+    $this->container->get('kissmetrics.webtracker')->addSet(mixed $properties);
+	or
+    $this->container->get('kissmetrics.sessiontracker')->addSet(mixed $properties);
+
+Add Alias
+    $this->container->get('kissmetrics.webtracker')->addAlias('Identify', 'Associate');
+	or
+    $this->container->get('kissmetrics.sessiontracker')->addAlias('Identify', 'Associate');
