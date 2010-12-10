@@ -7,6 +7,7 @@ use Bundle\KissmetricsBundle\Queue;
 
 abstract class AbstractTracker implements TrackerInterface {
 
+	protected $identifier;
 	protected $queue = array();
 	protected $config = array();
 
@@ -32,19 +33,8 @@ abstract class AbstractTracker implements TrackerInterface {
 		return $this->config;
 	}
 
-	public function hasQueue() {
-		if (!empty($this->queue)) {
-			return true;
-		}
-		return false;
-	}
-
-	public function setQueue($queue) {
-		$this->queue = $queue;
-	}
-
-	public function getQueue() {
-		return $this->queue;
+	public function getIdentifier() {
+		return $this->identifier;
 	}
 
 	public function hasItem(Queue\Item $item) {
@@ -63,9 +53,25 @@ abstract class AbstractTracker implements TrackerInterface {
 		return $item;
 	}
 
+	public function hasQueue() {
+		if (!empty($this->queue)) {
+			return true;
+		}
+		return false;
+	}
+
+	public function setQueue($queue) {
+		$this->queue = $queue;
+	}
+
+	public function getQueue() {
+		return $this->queue;
+	}
+
 	public function addIdentify($name) {
 		$item = new Queue\Item();
 		$item->setKey(Queue\Item::IDENTIFY);
+		$this->identifier = $name;
 		$item->setName($name);
 		$this->addItem($item);
 		return $item;
