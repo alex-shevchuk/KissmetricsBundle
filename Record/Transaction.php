@@ -36,7 +36,7 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getCountry() {
-		if (array_key_exists('affiliation', $this->properties)) {
+		if (array_key_exists('country', $this->properties)) {
 			return $this->properties['country'];
 		}	
 	}
