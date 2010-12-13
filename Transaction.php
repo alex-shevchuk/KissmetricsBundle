@@ -71,6 +71,10 @@ class Transaction {
 		}
 	}
 
+	public function setItems($items) {
+		$this->items = $items;
+	}
+
 	public function getItems() {
 		return $this->items;
 	}
