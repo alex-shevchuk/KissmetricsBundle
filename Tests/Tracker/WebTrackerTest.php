@@ -3,6 +3,7 @@
 namespace Bundle\KissmetricsBundle\Tests\Tracker;
 
 use Bundle\KissmetricsBundle\Tracker\WebTracker;
+use Bundle\KissmetricsBundle\Transaction;
 use Bundle\KissmetricsBundle\Queue\Item;
 
 class WebTrackerTest extends \PHPUnit_Framework_TestCase {
@@ -53,6 +54,12 @@ class WebTrackerTest extends \PHPUnit_Framework_TestCase {
 		$val = array('1', 2, '3');
 		$this->tracker->setQueue($val);
 		$this->assertEquals($val, $this->tracker->getQueue());
+	}
+
+	public function testSetGetTransaction() {
+		$val = new Transaction();
+		$this->tracker->setTransaction($val);
+		$this->assertEquals($val, $this->tracker->getTransaction());
 	}
 
 	public function testAddItem() {

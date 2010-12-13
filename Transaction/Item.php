@@ -6,7 +6,6 @@ class Item {
 
 	protected $category;
 	protected $name;
-	protected $orderNumber;
 	protected $price;
 	protected $quantity;
 	protected $sku;
@@ -25,14 +24,6 @@ class Item {
 
 	public function getName() {
 		return $this->name;
-	}
-
-	public function setOrderNumber($orderNumber) {
-		$this->orderNumber = (string) $orderNumber;
-	}
-
-	public function getOrderNumber() {
-		return $this->orderNumber;
 	}
 
 	public function setPrice($price) {

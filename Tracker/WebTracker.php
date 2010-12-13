@@ -4,6 +4,7 @@ namespace Bundle\KissmetricsBundle\Tracker;
 
 use Symfony\Component\HttpFoundation\Request;
 use Bundle\KissmetricsBundle\AbstractTracker;
+use Bundle\KissmetricsBundle\Transaction;
 use Bundle\KissmetricsBundle\Queue;
 
 class WebTracker extends AbstractTracker {
@@ -15,6 +16,7 @@ class WebTracker extends AbstractTracker {
 		'trackDefaultView' => true
 	);
 	protected $request;
+	protected $transaction;
 	protected $withoutBaseUrl = true;
 
 	public function __construct(array $config = array(), Request $request) {
@@ -48,6 +50,14 @@ class WebTracker extends AbstractTracker {
 
 	public function getTrackDefaultView() {
 		return $this->config['trackDefaultView'];
+	}
+
+	public function setTransaction(Transaction $transaction) {
+		$this->transaction = $transaction;
+	}
+
+	public function getTransaction() {
+		return $this->transaction;
 	}
 
 	public function setWithoutBaseUrl($b) {

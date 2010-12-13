@@ -21,7 +21,6 @@ class ItemTest extends \PHPUnit_Framework_TestCase {
 	public function testConstructor() {
 		$this->assertNull($this->item->getCategory());
 		$this->assertNull($this->item->getName());
-		$this->assertNull($this->item->getOrderNumber());
 		$this->assertNull($this->item->getPrice());
 		$this->assertNull($this->item->getQuantity());
 		$this->assertNull($this->item->getSku());
@@ -37,12 +36,6 @@ class ItemTest extends \PHPUnit_Framework_TestCase {
 		 $val = "name";
 		 $this->item->setName($val);
 		 $this->assertEquals($val, $this->item->getName());
-	}
-
-	public function testSetGetOrderNumber() {
-		 $val = "xxxxxx";
-		 $this->item->setOrderNumber($val);
-		 $this->assertEquals($val, $this->item->getOrderNumber());
 	}
 
 	public function testSetGetPrice() {

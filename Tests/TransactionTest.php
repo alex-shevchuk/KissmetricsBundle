@@ -22,6 +22,7 @@ class TransactionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertNull($this->transaction->getAffiliation());
 		$this->assertNull($this->transaction->getCity());
 		$this->assertNull($this->transaction->getCountry());
+		$this->assertFalse($this->transaction->hasItems());
 		$this->assertNull($this->transaction->getOrderNumber());
 		$this->assertNull($this->transaction->getShipping());
 		$this->assertNull($this->transaction->getState());
@@ -45,6 +46,21 @@ class TransactionTest extends \PHPUnit_Framework_TestCase {
 		 $val = "country";
 		 $this->transaction->setCountry($val);
 		 $this->assertEquals($val, $this->transaction->getCountry());
+	}
+
+	public function testSetGetItems() {
+		$val = array('1', 2, '3');
+		$this->transaction->setItems($val);
+		$this->assertEquals($val, $this->transaction->getItems());
+	}
+
+	public function testAddRemoveItem() {
+		$item = new Transaction\Item();
+		$this->assertFalse($this->transaction->hasItem($item));
+		$this->transaction->addItem($item);
+		$this->assertTrue($this->transaction->hasItem($item));
+		$this->transaction->removeItem($item);
+		$this->assertFalse($this->transaction->hasItem($item));
 	}
 
 	public function testSetGetOrderNumber() {
