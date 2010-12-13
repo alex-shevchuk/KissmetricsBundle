@@ -4,7 +4,7 @@ namespace Bundle\KissmetricsBundle\Tracker;
 
 use Symfony\Component\HttpFoundation\Request;
 use Bundle\KissmetricsBundle\AbstractTracker;
-use Bundle\KissmetricsBundle\Transaction;
+use Bundle\KissmetricsBundle\Record\Transaction;
 use Bundle\KissmetricsBundle\Queue;
 
 class WebTracker extends AbstractTracker {
