@@ -50,4 +50,24 @@ class Item {
 		return $this->sku;
 	}
 
+	public function toArray() {
+		$out = array();
+		if (isset($this->category)) {
+			$out['category'] = $this->category;
+		}
+		if (isset($this->name)) {
+			$out['name'] = $this->name;
+		}
+		if (isset($this->price)) {
+			$out['price'] = $this->price;
+		}
+		if (isset($this->quantity)) {
+			$out['quantity'] = $this->quantity;
+		}
+		if (isset($this->sku)) {
+			$out['sku'] = $this->sku;
+		}
+		return $out;
+	}
+
 }

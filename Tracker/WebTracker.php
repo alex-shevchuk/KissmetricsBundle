@@ -54,7 +54,7 @@ class WebTracker extends AbstractTracker {
 
 	public function addTransaction(Transaction $transaction) {
 		$item = $this->addRecord($transaction->getName(), $transaction->getProperties());
-		return $item;	
+		return $item;
 	}
 
 	public function setWithoutBaseUrl($b) {

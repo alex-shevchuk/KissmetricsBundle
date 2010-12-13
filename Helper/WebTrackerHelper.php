@@ -29,17 +29,7 @@ class WebTrackerHelper extends Helper {
 	}
 
 	public function render(Item $item) {
-		$out = static::KMQ.".push(['".$item->getKey()."'";
-
-		if (Item::SET != $item->getKey()) {
-			$out .= ", '".$item->getName()."'";
-		}
-		if ($item->getProperties()) {
-			$out .= ", ".json_encode($item->getProperties(), \JSON_FORCE_OBJECT);
-		}
-
-		$out .= "]);";
-		return $out;
+		return static::KMQ.".push(".$item->toJson().");";
 	}
 
 	static public function getKmq() {

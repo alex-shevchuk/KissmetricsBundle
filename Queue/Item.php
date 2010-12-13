@@ -40,4 +40,29 @@ class Item {
 		return $this->properties;
 	}
 
+	public function toJson() {
+		$record = array();
+		$record[] = $this->getKey();
+		if (self::SET != $this->getKey()) {
+			$record[] = $this->getName();
+		}
+		if ($properties = $this->getProperties()) {
+			if (is_array($properties)) {
+				foreach ($properties as $key => $property) {
+					if (is_array($property)) {
+						foreach($property as $instance) {
+							if (is_object($instance)) {
+								$properties[$key] = array_map(function($item){
+									return $item->toArray();
+								}, $properties[$key]);
+							}
+						}
+					}
+				}
+			}
+			$record[] = $properties;
+		}
+		return json_encode($record);
+	}
+
 }
