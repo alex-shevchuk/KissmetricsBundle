@@ -3,7 +3,7 @@
 namespace Bundle\KissmetricsBundle\Tests\Tracker;
 
 use Bundle\KissmetricsBundle\Tracker\WebTracker;
-use Bundle\KissmetricsBundle\Transaction;
+use Bundle\KissmetricsBundle\Record\Transaction;
 use Bundle\KissmetricsBundle\Queue\Item;
 
 class WebTrackerTest extends \PHPUnit_Framework_TestCase {
