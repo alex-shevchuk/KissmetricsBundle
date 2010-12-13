@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tests\Transaction;
+namespace Bundle\KissmetricsBundle\Tests\Record\Transaction;
 
-use Bundle\KissmetricsBundle\Transaction\Item;
+use Bundle\KissmetricsBundle\Record\Transaction\Item;
 
 class ItemTest extends \PHPUnit_Framework_TestCase {
 

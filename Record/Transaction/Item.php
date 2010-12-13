@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Transaction;
+namespace Bundle\KissmetricsBundle\Record\Transaction;
 
 class Item {
 

@@ -52,12 +52,9 @@ class WebTracker extends AbstractTracker {
 		return $this->config['trackDefaultView'];
 	}
 
-	public function setTransaction(Transaction $transaction) {
-		$this->transaction = $transaction;
-	}
-
-	public function getTransaction() {
-		return $this->transaction;
+	public function addTransaction(Transaction $transaction) {
+		$item = $this->addRecord($transaction->getName(), $transaction->getProperties());
+		return $item;	
 	}
 
 	public function setWithoutBaseUrl($b) {
@@ -74,7 +71,8 @@ class WebTracker extends AbstractTracker {
 			$properties = array(
 				static::URI => $this->getRequestUri()
 			);
-			$this->addRecord($name, $properties);
+			$item = $this->addRecord($name, $properties);
+			return $item;
 		}
 	}
 

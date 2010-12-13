@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tests;
+namespace Bundle\KissmetricsBundle\Tests\Record;
 
-use Bundle\KissmetricsBundle\Transaction;
+use Bundle\KissmetricsBundle\Record\Transaction;
 
 class TransactionTest extends \PHPUnit_Framework_TestCase {
 

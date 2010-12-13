@@ -56,20 +56,16 @@ class WebTrackerTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($val, $this->tracker->getQueue());
 	}
 
-	public function testSetGetTransaction() {
+	public function testAddTransaction() {
 		$val = new Transaction();
-		$this->tracker->setTransaction($val);
-		$this->assertEquals($val, $this->tracker->getTransaction());
+		$properties = array('1', '2', '3');
+		$val->setProperties($properties);
+		$item = $this->tracker->addTransaction($val);
+		$this->assertEquals(Transaction::RECORD_NAME, $item->getName());
+		$this->assertEquals($properties, $item2->getProperties());
+		$this->assertTrue($this->tracker->hasItem($item));
 	}
 
-	public function testAddItem() {
-		$item = new Item();
-		$this->assertFalse($this->tracker->hasItem($item));
-		$this->tracker->addItem($item);
-		$this->assertTrue($this->tracker->hasItem($item));
-		$this->tracker->removeItem($item);
-		$this->assertFalse($this->tracker->hasItem($item));
-	}
 
 	public function testAddIdentify() {
 		$name = 'Identify';
@@ -91,7 +87,7 @@ class WebTrackerTest extends \PHPUnit_Framework_TestCase {
 		$name2 = 'Record2';
 		$prop2 = array('some', 2, '45');
 		$item2 = $this->tracker->addRecord($name2, $prop2);
-		$this->assertEquals(ITEM::RECORD, $item2->getKey());
+		$this->assertEquals(Item::RECORD, $item2->getKey());
 		$this->assertEquals($name2, $item2->getName());
 		$this->assertEquals($prop2, $item2->getProperties());
 		$this->assertTrue($this->tracker->hasItem($item2));
