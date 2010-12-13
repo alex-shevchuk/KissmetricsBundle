@@ -16,7 +16,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getAffiliation() {
-		return $this->properties['affiliation'];
+		if (array_key_exists('affiliation', $this->properties)) {
+			return $this->properties['affiliation'];
+		}
 	}
 
 	public function setCity($city) {
@@ -24,7 +26,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getCity() {
-		return $this->properties['city'];
+		if (array_key_exists('city', $this->properties)) {
+			return $this->properties['city'];
+		}
 	}
 
 	public function setCountry($country) {
@@ -32,7 +36,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getCountry() {
-		return $this->properties['country'];
+		if (array_key_exists('affiliation', $this->properties)) {
+			return $this->properties['country'];
+		}	
 	}
 
 	public function hasItems() {
@@ -78,7 +84,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getItems() {
-		return $this->properties['items'];
+		if (array_key_exists('items', $this->properties)) {
+			return $this->properties['items'];
+		}
 	}
 
 	public function getName() {
@@ -90,7 +98,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getOrderNumber() {
-		return $this->properties['orderNumber'];
+		if (array_key_exists('orderNumber', $this->properties)) {
+			return $this->properties['orderNumber'];
+		}
 	}
 
 	public function setShipping($shipping) {
@@ -98,7 +108,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getShipping() {
-		return $this->properties['shipping'];
+		if (array_key_exists('shipping', $this->properties)) {
+			return $this->properties['shipping'];
+		}
 	}
 
 	public function setState($state) {
@@ -106,7 +118,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getState() {
-		return $this->properties['state'];
+		if (array_key_exists('state', $this->properties)) {
+			return $this->properties['state'];
+		}
 	}
 
 	public function setTax($tax) {
@@ -114,7 +128,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getTax() {
-		return $this->properties['tax'];
+		if (array_key_exists('tax', $this->properties)) {
+			return $this->properties['tax'];
+		}
 	}
 
 	public function setTotal($total) {
@@ -122,7 +138,9 @@ class Transaction extends AbstractRecord {
 	}
 
 	public function getTotal() {
-		return $this->properties['total'];
+		if (array_key_exists('total', $this->properties)) {
+			return $this->properties['total'];
+		}
 	}
 
 }
