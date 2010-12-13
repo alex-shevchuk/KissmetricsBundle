@@ -55,6 +55,8 @@ class Transaction extends AbstractRecord {
 			} else {
 				return in_array($item, $this->items, true);
 			}
+		} else {
+			return false;
 		}
 	}
 
