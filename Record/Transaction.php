@@ -50,10 +50,10 @@ class Transaction extends AbstractRecord {
 
 	public function hasItem(Item $item) {
 		if (array_key_exists('items', $this->properties)) {
-			if ($this->items instanceof \Doctrine\Common\Collections\Collection) {
-				return $this->items->contains($item);
+			if ($this->properties['items'] instanceof \Doctrine\Common\Collections\Collection) {
+				return $this->properties['items']->contains($item);
 			} else {
-				return in_array($item, $this->items, true);
+				return in_array($item, $this->properties['items'], true);
 			}
 		} else {
 			return false;
@@ -62,7 +62,7 @@ class Transaction extends AbstractRecord {
 
 	public function addItem(Item $item) {
 		if (!array_key_exists('items', $this->properties)) {
-			$this->properties['items'];
+			$this->properties['items'] = array();
 		}
 		$this->properties['items'][] = $item;
 	}

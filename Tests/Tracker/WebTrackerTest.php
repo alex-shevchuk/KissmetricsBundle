@@ -62,7 +62,7 @@ class WebTrackerTest extends \PHPUnit_Framework_TestCase {
 		$val->setProperties($properties);
 		$item = $this->tracker->addTransaction($val);
 		$this->assertEquals(Transaction::RECORD_NAME, $item->getName());
-		$this->assertEquals($properties, $item2->getProperties());
+		$this->assertEquals($properties, $item->getProperties());
 		$this->assertTrue($this->tracker->hasItem($item));
 	}
 
