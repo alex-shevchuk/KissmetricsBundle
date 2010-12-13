@@ -9,7 +9,7 @@ class Transaction extends AbstractRecord {
 
  	const RECORD_NAME = 'transaction';
 
-	protected properties = array();	
+	protected $properties = array();	
 
 	public function setAffiliation($affiliation) {
 		$this->properties['affiliation'] = (string) $affiliation;
