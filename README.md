@@ -39,9 +39,11 @@ Add Identify
 
 Add Record
     $this->container->get('kissmetrics.webtracker')->addRecord('Name');
+	or
     $this->container->get('kissmetrics.webtracker')->addRecord('Name', mixed $properties);
-    or 
+	or
     $this->container->get('kissmetrics.sessiontracker')->addRecord('Name');
+	or
     $this->container->get('kissmetrics.sessiontracker')->addRecord('Name', mixed $properties);
 
 Add Set
@@ -53,3 +55,26 @@ Add Alias
     $this->container->get('kissmetrics.webtracker')->addAlias('Identify', 'Associate');
 	or
     $this->container->get('kissmetrics.sessiontracker')->addAlias('Identify', 'Associate');
+
+Add Transaction
+    $transaction = new \Bundle\KissmetricsBundle\Record\Transaction();
+    $transaction->setAffiliation('My Store');
+    $transaction->setCity('New York');
+    $transaction->setCountry('US');
+    $transaction->setOrderNumber('xxxxx');
+    $transaction->setShipping(10.46);
+    $transaction->setState('NY');
+    $transaction->setTax(5.35);
+    $transaction->setTotal(100.00);
+    
+    $item = new \Bundle\KissmetricsBundle\Record\Transaction\Item();
+    $item->setCategory('Technology');
+    $item->setName('Keyboard');
+    $item->setPrice(75.00);
+    $item->setQuantity(3);
+    $item->setSku('xx-yy');
+    $transaction->addItem($item);
+
+    $this->container->get('kissmetrics.webtracker')->addTransaction($transaction);
+	or
+    $this->container->get('kissmetrics.sessiontracker')->addTransaction($transaction);
