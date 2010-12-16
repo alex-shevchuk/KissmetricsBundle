@@ -1,5 +1,10 @@
 # KissmetricsBundle
 
+The KissmetricsBundle adds the ability to add all kissmetrics api calls
+to your application. These include "identify", "record", "set", "alias".
+
+There are additional Record objects premade for Page and Transaction.
+
 ## Installation
 
 ### Application Kernel

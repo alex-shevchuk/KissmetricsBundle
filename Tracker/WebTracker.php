@@ -4,13 +4,11 @@ namespace Bundle\KissmetricsBundle\Tracker;
 
 use Symfony\Component\HttpFoundation\Request;
 use Bundle\KissmetricsBundle\AbstractTracker;
+use Bundle\KissmetricsBundle\Record\Page;
 use Bundle\KissmetricsBundle\Record\Transaction;
 use Bundle\KissmetricsBundle\Queue;
 
 class WebTracker extends AbstractTracker {
-
-	const PAGE = 'page';
-	const URI  = 'uri';
 
 	protected $config = array(
 		'trackDefaultView' => true
@@ -52,6 +50,11 @@ class WebTracker extends AbstractTracker {
 		return $this->config['trackDefaultView'];
 	}
 
+	public function addPage(Page $page) {
+		$item = $this->addRecord($page->getName(), $page->getProperties());
+		return $item;
+	}
+
 	public function addTransaction(Transaction $transaction) {
 		$item = $this->addRecord($transaction->getName(), $transaction->getProperties());
 		return $item;
@@ -67,11 +70,14 @@ class WebTracker extends AbstractTracker {
 
 	public function checkTrackDefaultView() {
 		if ($this->getTrackDefaultView()) {
-			$name = static::PAGE;
-			$properties = array(
-				static::URI => $this->getRequestUri()
-			);
-			$item = $this->addRecord($name, $properties);
+			$page = new Page();
+			$page->setHost($this->getRequest()->getHost());
+			$page->setPath($this->getRequestUri());
+			$page->setUri($page->getHost().$page->getPath());
+			if ($this->getRequest()->server->has('HTTP_REFERER')) {
+				$page->setReferrer($this->getRequest()->server->get('HTTP_REFERER'));
+			}
+			$item = $this->addRecord($page->getName(), $page->getProperties());
 			return $item;
 		}
 	}
