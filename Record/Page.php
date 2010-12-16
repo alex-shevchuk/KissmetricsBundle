@@ -20,6 +20,10 @@ class Page extends AbstractRecord {
 		}
 	}
 
+	public function getName() {
+		return self::RECORD_NAME;
+	}
+
 	public function setPath($path) {
 		$this->properties['path'] = (string) $path;
 	}
