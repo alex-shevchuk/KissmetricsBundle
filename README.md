@@ -39,10 +39,10 @@ Enable loading of the Kissmetrics Tracker service by adding the following to the
 
 #### View
 Default Web Tracker
-    {% include "KissmetricsBundle:Tracker:web" with ['_view': _view] %}
+    {% include 'TirnaKissmetricsBundle:Tracker:web.html.twig' %}
 
 OR Anonymous Session Tracker - Use this if you intend to alias the anonymous session user to a real user at some later point
-    {% include "KissmetricsBundle:Tracker:session" with ['_view': _view] %}
+    {% include 'TirnaKissmetricsBundle:Tracker:session.html.twig' %}
 
 #### Optional (Add additional items to queue)
 Add Identify
