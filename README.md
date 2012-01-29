@@ -15,16 +15,35 @@ Add the following lines in your deps file:
         git=https://github.com/advancingu/KissmetricsBundle.git
         target=bundles/Tirna/KissmetricsBundle
 
+### Add the Tirna namespace to your autoloader
+
+```php
+<?php
+// app/autoload.php
+
+$loader->registerNamespaces(array(
+    'Tirna' => __DIR__.'/../vendor/bundles',
+    // your other namespaces
+));
+```
+
 ### Application Kernel
 
 Add TirnaKissmetricsBundle to the `registerBundles()` method of your application kernel:
 
-    public function registerBundles()
-    {
-        return array(
-            new Tirna\KissmetricsBundle\TirnaKissmetricsBundle(),
-        );
-    }
+```php
+<?php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    return array(
+        // ...
+        new Tirna\KissmetricsBundle\TirnaKissmetricsBundle(),
+        // ...
+    );
+}
+```
 
 ## Configuration
 
