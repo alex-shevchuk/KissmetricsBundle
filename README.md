@@ -51,6 +51,7 @@ public function registerBundles()
 
 #### Application config.yml
 Enable loading of the Kissmetrics Tracker service by adding the following to the application's `config.yml` file:
+
 ```yaml
 # app/config/config.yml
 tirna_kissmetrics.tracker:
@@ -60,10 +61,12 @@ tirna_kissmetrics.tracker:
 
 #### View
 Default Web Tracker
+
 ```
 {% include 'TirnaKissmetricsBundle:Tracker:web.html.twig' %}
 ```
 OR Anonymous Session Tracker - Use this if you intend to alias the anonymous session user to a real user at some later point
+
 ```
 {% include 'TirnaKissmetricsBundle:Tracker:session.html.twig' %}
 ```
@@ -72,6 +75,7 @@ OR Anonymous Session Tracker - Use this if you intend to alias the anonymous ses
 Add Identify
 
 ```php
+<?php
     $this->container->get('kissmetrics.webtracker')->addIdentify('Your Identity');
 // or
     $this->container->get('kissmetrics.sessiontracker')->addIdentify('Your Identity');
@@ -80,6 +84,7 @@ Add Identify
 Add Record
 
 ```php
+<?php
 $this->container->get('kissmetrics.webtracker')->addRecord('Name');
 // or
 $this->container->get('kissmetrics.webtracker')->addRecord('Name', mixed $properties);
@@ -91,6 +96,7 @@ $this->container->get('kissmetrics.sessiontracker')->addRecord('Name', mixed $pr
 Add Set
 
 ```php
+<?php
 $this->container->get('kissmetrics.webtracker')->addSet(mixed $properties);
 // or
 $this->container->get('kissmetrics.sessiontracker')->addSet(mixed $properties);
@@ -99,6 +105,7 @@ $this->container->get('kissmetrics.sessiontracker')->addSet(mixed $properties);
 Add Alias
 
 ```php
+<?php
 $this->container->get('kissmetrics.webtracker')->addAlias('Identify', 'Associate');
 // or
 $this->container->get('kissmetrics.sessiontracker')->addAlias('Identify', 'Associate');
@@ -107,6 +114,7 @@ $this->container->get('kissmetrics.sessiontracker')->addAlias('Identify', 'Assoc
 Add Transaction
 
 ```php
+<?php
 $transaction = new \Tirna\KissmetricsBundle\Record\Transaction();
 $transaction->setAffiliation('My Store');
 $transaction->setCity('New York');
