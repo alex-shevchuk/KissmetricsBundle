@@ -7,6 +7,14 @@ There are additional Record objects premade for Page and Transaction.
 
 ## Installation
 
+### Add this bundle to your project
+
+Add the following lines in your deps file:
+
+    [KissmetricsBundle]
+        git=https://github.com/advancingu/KissmetricsBundle.git
+        target=bundles/Tirna/KissmetricsBundle
+
 ### Application Kernel
 
 Add KissmetricsBundle to the `registerBundles()` method of your application kernel:
@@ -14,7 +22,7 @@ Add KissmetricsBundle to the `registerBundles()` method of your application kern
     public function registerBundles()
     {
         return array(
-            new Bundle\KissmetricsBundle\KissmetricsBundle(),
+            new Tirna\KissmetricsBundle\KissmetricsBundle(),
         );
     }
 
@@ -62,7 +70,7 @@ Add Alias
     $this->container->get('kissmetrics.sessiontracker')->addAlias('Identify', 'Associate');
 
 Add Transaction
-    $transaction = new \Bundle\KissmetricsBundle\Record\Transaction();
+    $transaction = new \Tirna\KissmetricsBundle\Record\Transaction();
     $transaction->setAffiliation('My Store');
     $transaction->setCity('New York');
     $transaction->setCountry('US');
@@ -72,7 +80,7 @@ Add Transaction
     $transaction->setTax(5.35);
     $transaction->setTotal(100.00);
     
-    $item = new \Bundle\KissmetricsBundle\Record\Transaction\Item();
+    $item = new \Tirna\KissmetricsBundle\Record\Transaction\Item();
     $item->setCategory('Technology');
     $item->setName('Keyboard');
     $item->setPrice(75.00);

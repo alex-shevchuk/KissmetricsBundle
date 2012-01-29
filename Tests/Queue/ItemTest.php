@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tests\Queue;
+namespace Tirna\KissmetricsBundle\Tests\Queue;
 
-use Bundle\KissmetricsBundle\Queue\Item;
+use Tirna\KissmetricsBundle\Queue\Item;
 
 class ItemTest extends \PHPUnit_Framework_TestCase {
 

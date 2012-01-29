@@ -1,10 +1,10 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tests\Tracker;
+namespace Tirna\KissmetricsBundle\Tests\Tracker;
 
-use Bundle\KissmetricsBundle\Tracker\WebTracker;
-use Bundle\KissmetricsBundle\Record\Transaction;
-use Bundle\KissmetricsBundle\Queue\Item;
+use Tirna\KissmetricsBundle\Tracker\WebTracker;
+use Tirna\KissmetricsBundle\Record\Transaction;
+use Tirna\KissmetricsBundle\Queue\Item;
 
 class WebTrackerTest extends \PHPUnit_Framework_TestCase {
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tracker;
+namespace Tirna\KissmetricsBundle\Tracker;
 
 use Symfony\Component\HttpFoundation\Request;
-use Bundle\KissmetricsBundle\AbstractTracker;
-use Bundle\KissmetricsBundle\Record\Page;
-use Bundle\KissmetricsBundle\Record\Transaction;
-use Bundle\KissmetricsBundle\Queue;
+use Tirna\KissmetricsBundle\AbstractTracker;
+use Tirna\KissmetricsBundle\Record\Page;
+use Tirna\KissmetricsBundle\Record\Transaction;
+use Tirna\KissmetricsBundle\Queue;
 
 class WebTracker extends AbstractTracker {
 

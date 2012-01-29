@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tests\Record;
+namespace Tirna\KissmetricsBundle\Tests\Record;
 
-use Bundle\KissmetricsBundle\Record\Page;
+use Tirna\KissmetricsBundle\Record\Page;
 
 class PageTest extends \PHPUnit_Framework_TestCase {
 

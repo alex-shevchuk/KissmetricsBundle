@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Record;
+namespace Tirna\KissmetricsBundle\Record;
 
-use Bundle\KissmetricsBundle\AbstractRecord;
+use Tirna\KissmetricsBundle\AbstractRecord;
 
 class Page extends AbstractRecord {
 

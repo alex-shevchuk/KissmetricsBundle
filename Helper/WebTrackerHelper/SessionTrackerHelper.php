@@ -1,10 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Helper\WebTrackerHelper;
+namespace Tirna\KissmetricsBundle\Helper\WebTrackerHelper;
 
-use Bundle\KissmetricsBundle\Helper\WebTrackerHelper;
-use Bundle\KissmetricsBundle\Queue\Item;
-use Bundle\KissmetricsBundle\TrackerInterface;
+use Tirna\KissmetricsBundle\Helper\WebTrackerHelper;
 
 class SessionTrackerHelper extends WebTrackerHelper {
 

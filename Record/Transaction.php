@@ -1,9 +1,9 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Record;
+namespace Tirna\KissmetricsBundle\Record;
 
-use Bundle\KissmetricsBundle\AbstractRecord;
-use Bundle\KissmetricsBundle\Record\Transaction\Item;
+use Tirna\KissmetricsBundle\AbstractRecord;
+use Tirna\KissmetricsBundle\Record\Transaction\Item;
 
 class Transaction extends AbstractRecord {
 

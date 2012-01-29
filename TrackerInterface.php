@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle;
+namespace Tirna\KissmetricsBundle;
 
-use Bundle\KissmetricsBundle\Queue;
+use Tirna\KissmetricsBundle\Queue;
 
 interface TrackerInterface {
 

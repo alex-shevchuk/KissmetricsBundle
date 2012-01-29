@@ -1,9 +1,9 @@
 <?php
 
-namespace Bundle\KissmetricsBundle;
+namespace Tirna\KissmetricsBundle;
 
 use Symfony\Component\HttpFoundation\Request;
-use Bundle\KissmetricsBundle\Queue;
+use Tirna\KissmetricsBundle\Queue;
 
 abstract class AbstractTracker implements TrackerInterface {
 

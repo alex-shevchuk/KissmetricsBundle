@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Queue;
+namespace Tirna\KissmetricsBundle\Queue;
 
 class Item {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\DependencyInjection;
+namespace Tirna\KissmetricsBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;

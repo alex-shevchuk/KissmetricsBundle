@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tracker\WebTracker;
+namespace Tirna\KissmetricsBundle\Tracker\WebTracker;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session;

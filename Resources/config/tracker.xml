@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
 	<parameters>
-		<parameter key="kissmetrics.webtracker.class">Bundle\KissmetricsBundle\Tracker\WebTracker</parameter>
-		<parameter key="kissmetrics.sessiontracker.class">Bundle\KissmetricsBundle\Tracker\WebTracker\SessionTracker</parameter>
+		<parameter key="kissmetrics.webtracker.class">Tirna\KissmetricsBundle\Tracker\WebTracker</parameter>
+		<parameter key="kissmetrics.sessiontracker.class">Tirna\KissmetricsBundle\Tracker\WebTracker\SessionTracker</parameter>
 		<parameter key="kissmetrics.tracker.config" type="collection" />
 	</parameters>
 
@@ -23,12 +23,12 @@
 			<call method="checkTrackDefaultView" />
 		</service>
 
-		<service id="templating.helper.kissmetrics_webtracker" class="Bundle\KissmetricsBundle\Helper\WebTrackerHelper">
+		<service id="templating.helper.kissmetrics_webtracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper">
 			<tag name="templating.helper" alias="kissmetrics_webtracker" />
 			<argument type="service" id="kissmetrics.webtracker" />
 		</service>
 
-		<service id="templating.helper.kissmetrics_sessiontracker" class="Bundle\KissmetricsBundle\Helper\WebTrackerHelper\SessionTrackerHelper">
+		<service id="templating.helper.kissmetrics_sessiontracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper\SessionTrackerHelper">
 			<tag name="templating.helper" alias="kissmetrics_sessiontracker" />
 			<argument type="service" id="kissmetrics.sessiontracker" />
 		</service>

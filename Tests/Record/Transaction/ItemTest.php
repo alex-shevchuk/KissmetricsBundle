@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Tests\Record\Transaction;
+namespace Tirna\KissmetricsBundle\Tests\Record\Transaction;
 
-use Bundle\KissmetricsBundle\Record\Transaction\Item;
+use Tirna\KissmetricsBundle\Record\Transaction\Item;
 
 class ItemTest extends \PHPUnit_Framework_TestCase {
 

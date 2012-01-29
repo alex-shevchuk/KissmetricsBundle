@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\KissmetricsBundle;
+namespace Tirna\KissmetricsBundle;
 
 interface RecordInterface {
 

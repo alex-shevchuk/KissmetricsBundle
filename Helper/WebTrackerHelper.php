@@ -1,10 +1,10 @@
 <?php
 
-namespace Bundle\KissmetricsBundle\Helper;
+namespace Tirna\KissmetricsBundle\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
-use Bundle\KissmetricsBundle\Queue\Item;
-use Bundle\KissmetricsBundle\TrackerInterface;
+use Tirna\KissmetricsBundle\Queue\Item;
+use Tirna\KissmetricsBundle\TrackerInterface;
 
 class WebTrackerHelper extends Helper {
 
