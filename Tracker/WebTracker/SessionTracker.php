@@ -4,8 +4,8 @@ namespace Tirna\KissmetricsBundle\Tracker\WebTracker;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session;
-use Bundle\KissmetricsBundle\Tracker\WebTracker;
-use Bundle\KissmetricsBundle\Queue;
+use Tirna\KissmetricsBundle\Tracker\WebTracker;
+use Tirna\KissmetricsBundle\Queue;
 
 class SessionTracker extends WebTracker {
 
