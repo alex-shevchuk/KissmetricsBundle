@@ -11,25 +11,27 @@
 	</parameters>
 
 	<services>
-		<service id="kissmetrics.webtracker" class="%kissmetrics.webtracker.class%" scope="request">
+		<service id="kissmetrics.webtracker" class="%kissmetrics.webtracker.class%">
 			<argument>%kissmetrics.tracker.config%</argument>
+			<argument type="service" id="service_container" />
 			<call method="checkTrackDefaultView" />
 		</service>
 
-		<service id="kissmetrics.sessiontracker" class="%kissmetrics.sessiontracker.class%" scope="request">
+		<service id="kissmetrics.sessiontracker" class="%kissmetrics.sessiontracker.class%">
 			<argument>%kissmetrics.tracker.config%</argument>
+			<argument type="service" id="service_container" />
 			<argument type="service" id="session" />
 			<call method="checkAnonymous" />
 			<call method="checkTrackDefaultView" />
 		</service>
 
-		<service id="templating.helper.kissmetrics_webtracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper" scope="request">
-			<tag name="templating.helper" alias="kissmetrics_webtracker" />
+		<service id="templating.helper.kissmetrics_webtracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper">
+			<tag name="twig.extension" alias="kissmetrics_webtracker" />
 			<argument type="service" id="kissmetrics.webtracker" />
 		</service>
 
-		<service id="templating.helper.kissmetrics_sessiontracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper\SessionTrackerHelper" scope="request">
-			<tag name="templating.helper" alias="kissmetrics_sessiontracker" />
+		<service id="templating.helper.kissmetrics_sessiontracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper\SessionTrackerHelper">
+			<tag name="twig.extension" alias="kissmetrics_sessiontracker" />
 			<argument type="service" id="kissmetrics.sessiontracker" />
 		</service>
 

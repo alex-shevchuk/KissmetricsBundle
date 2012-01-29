@@ -2,7 +2,8 @@
 
 namespace Tirna\KissmetricsBundle\Tracker\WebTracker;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DependencyInjection\Container;
+
 use Symfony\Component\HttpFoundation\Session;
 use Tirna\KissmetricsBundle\Tracker\WebTracker;
 use Tirna\KissmetricsBundle\Queue;
@@ -15,9 +16,9 @@ class SessionTracker extends WebTracker {
 	);
 	protected $session;
 
-	public function __construct(array $config = array(), Request $request, Session $session) {
+	public function __construct(array $config = array(), Container $container, Session $session) {
 		$this->config = array_merge($this->config, $config);
-		$this->request = $request;
+		$this->request = $container->get('request');
 		$this->session = $session;
 	}
 

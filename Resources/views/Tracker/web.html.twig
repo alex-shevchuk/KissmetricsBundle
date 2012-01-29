@@ -1,21 +1,23 @@
 <script type="text/javascript">
-	var {{ _view.kissmetrics_webtracker.kmq }} = {{ _view.kissmetrics_webtracker.kmq }} || [];
-	function _kms(u){
-		setTimeout(function(){
-			var s = document.createElement('script');
-			var f = document.getElementsByTagName('script')[0];
-			s.type = 'text/javascript';
-			s.async = true;
-			s.src = u;
-			f.parentNode.insertBefore(s, f);
-		}, 1);
-	}
-	_kms('//i.kissmetrics.com/i.js');
-	_kms('//doug1izaerwt3.cloudfront.net/{{ _view.kissmetrics_webtracker.apiKey }}.1.js');
+    var {{ kissmetrics_webtracker.kmq }} = {{ kissmetrics_webtracker.kmq }} || [];
+    function _kms(u){
+        setTimeout(function(){
+            var s = document.createElement('script');
+            var f = document.getElementsByTagName('script')[0];
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = u;
+            f.parentNode.insertBefore(s, f);
+        }, 1);
+    }
+    _kms('//i.kissmetrics.com/i.js');
+    _kms('//doug1izaerwt3.cloudfront.net/{{ kissmetrics_webtracker.apiKey }}.1.js');
 
-	{% if _view.kissmetrics_webtracker.hasQueue() %}
-		{% for item in _view.kissmetrics_webtracker.getQueue() %}
-			{{ _view.kissmetrics_webtracker.render(item) | safe }}
-		{% endfor %}
-	{% endif %}
+    {% if kissmetrics_webtracker.hasQueue() %}
+        {% for item in kissmetrics_webtracker.getQueue() %}
+        {% autoescape false %}
+                {{ kissmetrics_webtracker.render(item) }}
+        {% endautoescape %}
+        {% endfor %}
+    {% endif %}
 </script>

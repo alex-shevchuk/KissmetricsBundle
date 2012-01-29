@@ -6,7 +6,7 @@ use Symfony\Component\Templating\Helper\Helper;
 use Tirna\KissmetricsBundle\Queue\Item;
 use Tirna\KissmetricsBundle\TrackerInterface;
 
-class WebTrackerHelper extends Helper {
+class WebTrackerHelper extends \Twig_Extension {
 
 	const KMQ = '_kmq';
 
@@ -39,5 +39,11 @@ class WebTrackerHelper extends Helper {
 	public function getName() {
 		return 'kissmetrics_webtracker';
 	}
+	
+	public function getGlobals()
+	{
+	    return array('kissmetrics_webtracker' => $this);
+	}
+	
 
 }

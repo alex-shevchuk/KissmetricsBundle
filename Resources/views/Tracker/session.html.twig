@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	var {{ _view.kissmetrics_sessiontracker.kmq }} = {{ _view.kissmetrics_sessiontracker.kmq }} || [];
+	var {{ kissmetrics_sessiontracker.kmq }} = {{ kissmetrics_sessiontracker.kmq }} || [];
 	function _kms(u){
 		setTimeout(function(){
 			var s = document.createElement('script');
@@ -11,11 +11,13 @@
 		}, 1);
 	}
 	_kms('//i.kissmetrics.com/i.js');
-	_kms('//doug1izaerwt3.cloudfront.net/{{ _view.kissmetrics_sessiontracker.apiKey }}.1.js');
+	_kms('//doug1izaerwt3.cloudfront.net/{{ kissmetrics_sessiontracker.apiKey }}.1.js');
 
-	{% if _view.kissmetrics_sessiontracker.hasQueue() %}
-		{% for item in _view.kissmetrics_sessiontracker.getQueue() %}
-			{{ _view.kissmetrics_sessiontracker.render(item) | safe }}
+	{% if kissmetrics_sessiontracker.hasQueue() %}
+		{% for item in kissmetrics_sessiontracker.getQueue() %}
+        {% autoescape false %}
+			{{ kissmetrics_sessiontracker.render(item) | }}
+        {% endautoescape %}
 		{% endfor %}
 	{% endif %}
 </script>

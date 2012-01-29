@@ -2,7 +2,8 @@
 
 namespace Tirna\KissmetricsBundle\Tracker;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DependencyInjection\Container;
+
 use Tirna\KissmetricsBundle\AbstractTracker;
 use Tirna\KissmetricsBundle\Record\Page;
 use Tirna\KissmetricsBundle\Record\Transaction;
@@ -17,9 +18,9 @@ class WebTracker extends AbstractTracker {
 	protected $transaction;
 	protected $withoutBaseUrl = true;
 
-	public function __construct(array $config = array(), Request $request) {
+	public function __construct(array $config = array(), Container $container) {
 		$this->config = array_merge($this->config, $config);
-		$this->request = $request;
+		$this->request = $container->get('request');
 	}
 
 	public function setRequest(Request $request) {
