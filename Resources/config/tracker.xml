@@ -1,6 +1,8 @@
-<container xmlns="http://www.symfony-project.org/schema/dic/services"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
 	<parameters>
 		<parameter key="kissmetrics.webtracker.class">Tirna\KissmetricsBundle\Tracker\WebTracker</parameter>
@@ -9,26 +11,24 @@
 	</parameters>
 
 	<services>
-		<service id="kissmetrics.webtracker" class="%kissmetrics.webtracker.class%" >
+		<service id="kissmetrics.webtracker" class="%kissmetrics.webtracker.class%" scope="request">
 			<argument>%kissmetrics.tracker.config%</argument>
-			<argument type="service" id="request" />
 			<call method="checkTrackDefaultView" />
 		</service>
 
-		<service id="kissmetrics.sessiontracker" class="%kissmetrics.sessiontracker.class%" >
+		<service id="kissmetrics.sessiontracker" class="%kissmetrics.sessiontracker.class%" scope="request">
 			<argument>%kissmetrics.tracker.config%</argument>
-			<argument type="service" id="request" />
 			<argument type="service" id="session" />
 			<call method="checkAnonymous" />
 			<call method="checkTrackDefaultView" />
 		</service>
 
-		<service id="templating.helper.kissmetrics_webtracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper">
+		<service id="templating.helper.kissmetrics_webtracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper" scope="request">
 			<tag name="templating.helper" alias="kissmetrics_webtracker" />
 			<argument type="service" id="kissmetrics.webtracker" />
 		</service>
 
-		<service id="templating.helper.kissmetrics_sessiontracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper\SessionTrackerHelper">
+		<service id="templating.helper.kissmetrics_sessiontracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper\SessionTrackerHelper" scope="request">
 			<tag name="templating.helper" alias="kissmetrics_sessiontracker" />
 			<argument type="service" id="kissmetrics.sessiontracker" />
 		</service>
