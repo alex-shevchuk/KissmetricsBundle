@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class KissmetricsExtension extends Extension {
+class TirnaKissmetricsExtension extends Extension {
 
 	protected $resources = array(
 		'kissmetrics_tracker'   => 'tracker.xml',
@@ -24,7 +24,7 @@ class KissmetricsExtension extends Extension {
 	}
 
 	public function getAlias() {
-		return 'kissmetrics';
+		return 'tirna_kissmetrics';
 	}
 
 	public function getNamespace() {

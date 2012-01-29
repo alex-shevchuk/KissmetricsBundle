@@ -33,7 +33,7 @@ Add KissmetricsBundle to the `registerBundles()` method of your application kern
 #### Application config.yml
 Enable loading of the Kissmetrics Tracker service by adding the following to the application's `config.yml` file:
 - - -
-    kissmetrics.tracker:
+    tirna_kissmetrics.tracker:
       config:
         apiKey: xxxxxx
 
