@@ -17,12 +17,12 @@ Add the following lines in your deps file:
 
 ### Application Kernel
 
-Add KissmetricsBundle to the `registerBundles()` method of your application kernel:
+Add TirnaKissmetricsBundle to the `registerBundles()` method of your application kernel:
 
     public function registerBundles()
     {
         return array(
-            new Tirna\KissmetricsBundle\KissmetricsBundle(),
+            new Tirna\KissmetricsBundle\TirnaKissmetricsBundle(),
         );
     }
 
@@ -34,8 +34,8 @@ Add KissmetricsBundle to the `registerBundles()` method of your application kern
 Enable loading of the Kissmetrics Tracker service by adding the following to the application's `config.yml` file:
 - - -
     tirna_kissmetrics.tracker:
-      config:
-        apiKey: xxxxxx
+        config:
+            apiKey: xxxxxx
 
 #### View
 Default Web Tracker
@@ -46,11 +46,13 @@ OR Anonymous Session Tracker - Use this if you intend to alias the anonymous ses
 
 #### Optional (Add additional items to queue)
 Add Identify
+
     $this->container->get('kissmetrics.webtracker')->addIdentify('Your Identity');
 	or
     $this->container->get('kissmetrics.sessiontracker')->addIdentify('Your Identity');
 
 Add Record
+
     $this->container->get('kissmetrics.webtracker')->addRecord('Name');
 	or
     $this->container->get('kissmetrics.webtracker')->addRecord('Name', mixed $properties);
@@ -60,16 +62,19 @@ Add Record
     $this->container->get('kissmetrics.sessiontracker')->addRecord('Name', mixed $properties);
 
 Add Set
+
     $this->container->get('kissmetrics.webtracker')->addSet(mixed $properties);
 	or
     $this->container->get('kissmetrics.sessiontracker')->addSet(mixed $properties);
 
 Add Alias
+
     $this->container->get('kissmetrics.webtracker')->addAlias('Identify', 'Associate');
 	or
     $this->container->get('kissmetrics.sessiontracker')->addAlias('Identify', 'Associate');
 
 Add Transaction
+
     $transaction = new \Tirna\KissmetricsBundle\Record\Transaction();
     $transaction->setAffiliation('My Store');
     $transaction->setCity('New York');
@@ -91,3 +96,4 @@ Add Transaction
     $this->container->get('kissmetrics.webtracker')->addTransaction($transaction);
 	or
     $this->container->get('kissmetrics.sessiontracker')->addTransaction($transaction);
+
