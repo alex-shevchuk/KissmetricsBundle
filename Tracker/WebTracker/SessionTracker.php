@@ -14,6 +14,10 @@ class SessionTracker extends WebTracker {
 		'trackAnonymous' => true,
 		'trackDefaultView' => true
 	);
+	
+	/**
+	 * @var \Symfony\Component\HttpFoundation\Session
+	 */
 	protected $session;
 
 	public function __construct(array $config = array(), Container $container, Session $session) {
@@ -31,9 +35,8 @@ class SessionTracker extends WebTracker {
 	}
 
 	public function checkAnonymous() {
-		if ($this->getTrackAnonymous() && session_id() && '' != session_id()) {
-			$name = session_id();
-			$this->addIdentify($name);
+		if ($this->getTrackAnonymous() && !is_null($this->session->getId())) {
+			$this->addIdentify($this->session->getId());
 		}
 	}
 
