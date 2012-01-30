@@ -19,7 +19,12 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('apiKey')->defaultValue('')->end()
+                ->arrayNode('config')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('apiKey')->defaultValue('')->end()
+                    ->end()
+                ->end()
             ->end();
 
         return $treeBuilder;
