@@ -2,6 +2,8 @@
 
 namespace Tirna\KissmetricsBundle\Tracker;
 
+use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\DependencyInjection\Container;
 
 use Tirna\KissmetricsBundle\AbstractTracker;
@@ -20,7 +22,10 @@ class WebTracker extends AbstractTracker {
 
 	public function __construct(array $config = array(), Container $container) {
 		$this->config = array_merge($this->config, $config);
-		$this->request = $container->get('request');
+		// getting request from $container leads to errors on console; use globals instead
+		// @see http://forum.symfony-project.org/viewtopic.php?f=23&t=37832
+		$this->request = Request::createFromGlobals();
+// 		$this->request = $container->get('request');
 	}
 
 	public function setRequest(Request $request) {
