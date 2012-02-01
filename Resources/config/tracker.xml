@@ -23,6 +23,7 @@
 			<argument type="service" id="session" />
 			<call method="checkAnonymous" />
 			<call method="checkTrackDefaultView" />
+            <call method="checkSignedIn" />
 		</service>
 
 		<service id="templating.helper.kissmetrics_webtracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper">

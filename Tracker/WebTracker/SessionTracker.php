@@ -21,6 +21,12 @@ class SessionTracker extends WebTracker {
 	 * @var \Symfony\Component\HttpFoundation\Session
 	 */
 	protected $session;
+	
+	/**
+	 * Username string, if a user is logged in (i.e. security context token is available).
+	 * @var string
+	 */
+	protected $user;
 
 	public function __construct(array $config = array(), Container $container, Session $session) {
 		$this->config = array_merge($this->config, $config);
@@ -29,6 +35,9 @@ class SessionTracker extends WebTracker {
 		$this->request = Request::createFromGlobals();
 // 		$this->request = $container->get('request');
 		$this->session = $session;
+		if (!is_null($container->get('security.context')->getToken())) {
+		    $this->user = $container->get('security.context')->getToken()->getUsername();
+		}
 	}
 
 	public function setTrackAnonymous($track = true) {
@@ -40,9 +49,18 @@ class SessionTracker extends WebTracker {
 	}
 
 	public function checkAnonymous() {
-		if ($this->getTrackAnonymous() && !is_null($this->session->getId())) {
+		if ($this->getTrackAnonymous() && is_null($this->getIdentifier()) && !is_null($this->session->getId())) {
 			$this->addIdentify($this->session->getId());
 		}
+	}
+	
+	/**
+	 * Adds an alias for non-anonymous users.
+	 */
+	public function checkSignedIn() {
+	    if (!empty($this->user) && $this->user !== 'anon.') {
+	        $this->addAlias($this->getIdentifier(), $this->user);
+	    }
 	}
 
 }
