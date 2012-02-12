@@ -6,7 +6,7 @@ use Tirna\KissmetricsBundle\AbstractRecord;
 
 class Page extends AbstractRecord {
 
- 	const RECORD_NAME = 'page';
+ 	const RECORD_NAME = 'Viewed page';
 
 	protected $properties = array();	
 
