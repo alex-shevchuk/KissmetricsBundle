@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\DependencyInjection\Container;
 
-use Symfony\Component\HttpFoundation\Session;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Tirna\KissmetricsBundle\Tracker\WebTracker;
 use Tirna\KissmetricsBundle\Queue;
 
@@ -18,7 +18,7 @@ class SessionTracker extends WebTracker {
 	);
 	
 	/**
-	 * @var \Symfony\Component\HttpFoundation\Session
+	 * @var \Symfony\Component\HttpFoundation\Session\Session
 	 */
 	protected $session;
 	
