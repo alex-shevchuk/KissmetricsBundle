@@ -1,0 +1,17 @@
+{
+    "name": "alex-shevchuk/kissmetrics-bundle",
+    "description": "Kissmetrics bundle",
+    "keywords": ["kissmetrics"],
+    "homepage": "https://github.com/alex-shevchuk/KissmetricsBundle",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0"
+    },
+
+    "minimum-stability": "dev",
+
+    "autoload": {
+        "psr-0": { "Kissmetrics": "" }
+    }
+}
