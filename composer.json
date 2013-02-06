@@ -11,6 +11,8 @@
 
     "minimum-stability": "dev",
 
+    "target-dir": "Tirna/KissmetricsBundle",
+
     "autoload": {
         "psr-0": { "Tirna": "" }
     }
