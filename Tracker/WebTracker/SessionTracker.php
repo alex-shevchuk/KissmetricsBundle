@@ -37,7 +37,7 @@ class SessionTracker extends WebTracker {
         }
 		$this->session = $session;
 		if (!is_null($container->get('security.context')->getToken())) {
-		    $this->user = $container->get('security.context')->getToken()->getUsername();
+		    $this->user = $container->get('security.context')->getToken()->getEmail();
 		}
 	}
 
