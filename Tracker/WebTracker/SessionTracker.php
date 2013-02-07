@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Tirna\KissmetricsBundle\Tracker\WebTracker;
 use Tirna\KissmetricsBundle\Queue;
 
+use Symfony\Component\Security\Core\SecurityContext;
+
 class SessionTracker extends WebTracker {
 
 	protected $config = array(
@@ -21,6 +23,7 @@ class SessionTracker extends WebTracker {
 	 * @var \Symfony\Component\HttpFoundation\Session\Session
 	 */
 	protected $session;
+    private $inited = false;
 	
 	/**
 	 * Username string, if a user is logged in (i.e. security context token is available).
@@ -28,17 +31,18 @@ class SessionTracker extends WebTracker {
 	 */
 	protected $user;
 
-	public function __construct(array $config = array(), Container $container, Session $session) {
+	public function __construct(array $config = array(), Container $container, Session $session, SecurityContext $securityContext) {
 		$this->config = array_merge($this->config, $config);
+        $this->securityContext = $securityContext;
         try {
             $this->request = $container->get('request');
         } catch (\Symfony\Component\DependencyInjection\Exception\InactiveScopeException $e) {
             // we should only get this exception when running on command line; we can safely ignore it in this case
         }
 		$this->session = $session;
-		if (!is_null($container->get('security.context')->getToken())) {
-		    $this->user = $container->get('security.context')->getToken()->getEmail();
-		}
+        if (!is_null($securityContext->getToken())) {
+            $this->user = $securityContext->getToken()->getUsername();
+        }
 	}
 
 	public function setTrackAnonymous($track = true) {
@@ -63,5 +67,36 @@ class SessionTracker extends WebTracker {
 	        $this->addAlias($this->getIdentifier(), $this->user);
 	    }
 	}
+
+    public function addRecords($name, $properties = null) {
+        $this->_init();
+        return $this->addRecord($name, $properties);
+    }
+
+    public function addSets($properties) {
+        $this->_init();
+        return $this->addSet($properties);
+    }
+
+    public function addAliases($identity, $associate) {
+        $this->_init();
+        return $this->addAlias($identity, $associate);
+    }
+
+    private function _init() {
+        if (!$this->inited) {
+            $this->inited = true;
+            $this->init();
+        }
+    }
+
+    public function init() {
+        if (!is_null($this->securityContext->getToken())) {
+            $this->user = $this->securityContext->getToken()->getUsername();
+        }
+        $this->checkAnonymous();
+        $this->checkTrackDefaultView();
+        $this->checkSignedIn();
+    }
 
 }

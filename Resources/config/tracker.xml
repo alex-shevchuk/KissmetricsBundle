@@ -17,14 +17,14 @@
 			<call method="checkTrackDefaultView" />
 		</service>
 
-		<service id="kissmetrics.sessiontracker" class="%kissmetrics.sessiontracker.class%">
-			<argument>%kissmetrics.tracker.config%</argument>
-			<argument type="service" id="service_container" />
-			<argument type="service" id="session" />
-			<call method="checkAnonymous" />
-			<call method="checkTrackDefaultView" />
-            <call method="checkSignedIn" />
-		</service>
+		<!--<service id="kissmetrics.sessiontracker" class="%kissmetrics.sessiontracker.class%">-->
+			<!--<argument>%kissmetrics.tracker.config%</argument>-->
+			<!--<argument type="service" id="service_container" />-->
+			<!--<argument type="service" id="session" />-->
+			<!--<call method="checkAnonymous" />-->
+			<!--<call method="checkTrackDefaultView" />-->
+            <!--<call method="checkSignedIn" />-->
+		<!--</service>-->
 
 		<service id="templating.helper.kissmetrics_webtracker" class="Tirna\KissmetricsBundle\Helper\WebTrackerHelper">
 			<tag name="twig.extension" alias="kissmetrics_webtracker" />
